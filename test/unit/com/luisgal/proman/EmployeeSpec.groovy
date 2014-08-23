@@ -18,7 +18,7 @@ class EmployeeSpec extends Specification {
     def employee = new Employee(code: 'anyCode', fullName: 'anyName')
       
     then: 'toString returns expected string'
-      "code anyCode full name anyName" == employee.toString()
+      "anyName" == employee.toString()
   }
 
   def getValidEmployee() {

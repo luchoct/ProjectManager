@@ -16,7 +16,6 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:layoutHead/>
 		<g:javascript library="application"/>		
-		<r:layoutResources />
 		<style type="text/css" media="screen">
 			#header {
 				margin: 0em 0em 5em 0em;
@@ -31,8 +30,8 @@
         font-size: 2em;
 			}
 		</style>
+		<r:layoutResources />
 	</head>
-	<body>
 		<div id="header"><h1>Project Management</h1></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

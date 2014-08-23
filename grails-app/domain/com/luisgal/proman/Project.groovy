@@ -3,13 +3,13 @@ package com.luisgal.proman
 import com.luisgal.proman.Employee
 
 class Project {
+  Integer priority;
   String code;
   String name;
   
   Date deliveryDate;
   
   String phase;
-  Integer priority;
 
   Employee technicalLead;
   Employee projectManager;
@@ -21,18 +21,13 @@ class Project {
   }
 
   static constraints = {
+    priority min: 1
     code maxSize: 20, blank: false, unique: true
     name maxSize: 40, blank: false
     deliveryDate nullable: true
-    //The only purpose of having phase here without any constraints is ensuring the order of the generated fields in view.
     phase inList: ['briefing', 'scoping', 'interaction', 'development', 'qa', 'release']
-    priority min: 1
     technicalLead nullable: true
     projectManager nullable: true
-  }
-
-  int compareTo(obj) {
-    code.compareTo(obj.code);
   }
 
   String toString() {

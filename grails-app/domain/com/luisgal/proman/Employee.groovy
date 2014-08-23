@@ -14,11 +14,7 @@ class Employee {
     fullName maxSize: 100, blank : false
   }
 
-  int compareTo(obj) {
-    code.compareTo(obj.code);
-  }
-
   String toString() {
-    return new StringBuilder(100) << 'code ' << code << ' full name ' << fullName
+    return fullName
   }
 }

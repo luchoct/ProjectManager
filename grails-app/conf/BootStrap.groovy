@@ -1,5 +1,4 @@
 
-import com.luisgal.proman.Phase
 import com.luisgal.proman.Employee
 import com.luisgal.proman.Project
 
@@ -13,9 +12,9 @@ class BootStrap {
       def david = new Employee(code: 'EMP_3', fullName: 'David Hicks').save(failOnError: true)
       def steve = new Employee(code: 'EMP_4', fullName: 'Steve Jobs').save(failOnError: true)
       new Project(code: 'PRY-2', name: 'Project Manager', technicalLead: joshua, projectManager: steve,
-        deliveryDate: new GregorianCalendar(2014, Calendar.AUGUST, 24).time, phase: Phase.RELEASE, priority: 1).save(failOnError: true)
+        deliveryDate: new GregorianCalendar(2014, Calendar.AUGUST, 24).time, phase: 'release', priority: 1).save(failOnError: true)
       new Project(code: 'PRY-1', name: 'Tetris', technicalLead: robert, projectManager: david,
-      deliveryDate: new GregorianCalendar(2014, Calendar.SEPTEMBER, 30).time, phase: Phase.BRIEFING, priority: 2).save(failOnError: true)
+      deliveryDate: new GregorianCalendar(2014, Calendar.SEPTEMBER, 30).time, phase: 'briefing', priority: 2).save(failOnError: true)
     }
   }
   def destroy = {

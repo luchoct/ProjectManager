@@ -18,7 +18,7 @@ class ProjectSpec extends Specification {
     def project = new Project(code: 'CODE_1', name: 'Any Name', 
       technicalLead: new Employee(code: 'codeTC', fullName: 'nameTC'),
       projectManager: new Employee(code: 'codePM', fullName: 'namePM'),
-      deliveryDate: new Date(), phase: Phase.BRIEFING, priority: 1)
+      deliveryDate: new Date(), phase: 'briefing', priority: 1)
       
     then: 'verify the toString result'
       "code CODE_1 name Any Name priority 1" == project.toString()
@@ -28,7 +28,7 @@ class ProjectSpec extends Specification {
     new Project(code: 'CODE_1', name: 'Any Name', 
       technicalLead: new Employee(code: 'codeTC', fullName: 'nameTC'),
       projectManager: new Employee(code: 'codePM', fullName: 'namePM'),
-      deliveryDate: new Date(), phase: Phase.BRIEFING, priority: 1)
+      deliveryDate: new Date(), phase: 'briefing', priority: 1)
   }
 
   def "test saving a valid project"() {
@@ -151,6 +151,18 @@ class ProjectSpec extends Specification {
     verifyValidationErrors(project, 'phase', 'nullable')
   }
 
+  def "test phase is wrong"() {
+    given:
+    mockForConstraintsTests Project
+
+    when: 'creating a project with wrong phase'
+    def project = getValidProject()
+    project.phase = 'wrong phase';
+      
+    then: 'validation should fail'
+    verifyValidationErrors(project, 'phase', 'inList')
+  }
+
   //PRIORITY TESTS
   
   def "test priority is mandatory"() {
@@ -215,7 +227,7 @@ class ProjectSpec extends Specification {
     def project1 = new Project(code: 'commonCode', name: 'aName', 
       technicalLead: new Employee(code: 'codeTC1', fullName: 'nameTC1'),
       projectManager: new Employee(code: 'codePM1', fullName: 'namePM1'),
-      deliveryDate: new Date(), phase: Phase.BRIEFING, priority: 1)
+      deliveryDate: new Date(), phase: 'briefing', priority: 1)
     def savedProject1 = project1.save(flush:true)
 
     then: 'saved project1'
@@ -225,7 +237,7 @@ class ProjectSpec extends Specification {
     def project2 = new Project(code: 'commonCode', name: 'anotherName', 
       technicalLead: new Employee(code: 'codeTC2', fullName: 'nameTC2'),
       projectManager: new Employee(code: 'codePM2', fullName: 'namePM2'),
-      deliveryDate: new Date(), phase: Phase.BRIEFING, priority: 1)
+      deliveryDate: new Date(), phase: 'briefing', priority: 1)
     def savedProject2 = project2.save(flush:true)
 
     then: 'validation of second project should fail'

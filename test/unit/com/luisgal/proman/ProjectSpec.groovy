@@ -47,44 +47,6 @@ class ProjectSpec extends Specification {
     !project.validate() && project.hasErrors() && project.errors[propertyName] == errorType
   }
   
-  // NAME TESTS
-  
-  def "test name is mandatory"() {
-    given:
-    mockForConstraintsTests Project
-
-    when: 'creating a project without full name'
-    def project = getValidProject()
-    project.name = null;
-      
-    then: 'validation should fail'
-    verifyValidationErrors(project, 'name', 'nullable')
-  }
-
-  def "test name is NOT empty"() {
-    given:
-    mockForConstraintsTests Project
-
-    when: 'creating a project with an empty name'
-    def project = getValidProject()
-    project.name = '';
-      
-    then: 'validation should fail'
-    verifyValidationErrors(project, 'name', 'blank')
-  }
-
-  def "test a name is too long"() {
-    given:
-    mockForConstraintsTests Project
-
-    when: 'creating a project with 41 characters code'
-    def project = getValidProject()
-    project.name = '123456789012345678901234567890123456789012345678901234567890123456789012345678901'
-      
-    then: 'validation should fail'
-    verifyValidationErrors(project, 'name', 'maxSize')
-  }
-
   //CODE TESTS
   
   def "test code is mandatory"() {
@@ -123,34 +85,44 @@ class ProjectSpec extends Specification {
     verifyValidationErrors(project, 'code', 'maxSize')
   }
 
-  //TECHNICAL LEAD TESTS
+  // NAME TESTS
   
-  def "test technicalLead is NOT mandatory"() {
+  def "test name is mandatory"() {
     given:
     mockForConstraintsTests Project
 
-    when: 'creating a project without technicalLead'
+    when: 'creating a project without full name'
     def project = getValidProject()
-    project.technicalLead = null;
+    project.name = null;
       
     then: 'validation should fail'
-    project.validate()
+    verifyValidationErrors(project, 'name', 'nullable')
   }
 
-  //PROJECT MANAGER TESTS
-  
-  def "test projectManager is NOT mandatory"() {
+  def "test name is NOT empty"() {
     given:
     mockForConstraintsTests Project
 
-    when: 'creating a project without projectManager'
+    when: 'creating a project with an empty name'
     def project = getValidProject()
-    project.projectManager = null;
+    project.name = '';
       
     then: 'validation should fail'
-    project.validate()
+    verifyValidationErrors(project, 'name', 'blank')
   }
-  
+
+  def "test a name is too long"() {
+    given:
+    mockForConstraintsTests Project
+
+    when: 'creating a project with 41 characters code'
+    def project = getValidProject()
+    project.name = '123456789012345678901234567890123456789012345678901234567890123456789012345678901'
+      
+    then: 'validation should fail'
+    verifyValidationErrors(project, 'name', 'maxSize')
+  }
+
   //DELIVERY DATE TESTS
 
   def "test deliveryDate is NOT mandatory"() {
@@ -205,6 +177,34 @@ class ProjectSpec extends Specification {
     verifyValidationErrors(project, 'priority', 'min')
   }
 
+  //TECHNICAL LEAD TESTS
+  
+  def "test technicalLead is NOT mandatory"() {
+    given:
+    mockForConstraintsTests Project
+
+    when: 'creating a project without technicalLead'
+    def project = getValidProject()
+    project.technicalLead = null;
+      
+    then: 'validation should fail'
+    project.validate()
+  }
+
+  //PROJECT MANAGER TESTS
+  
+  def "test projectManager is NOT mandatory"() {
+    given:
+    mockForConstraintsTests Project
+
+    when: 'creating a project without projectManager'
+    def project = getValidProject()
+    project.projectManager = null;
+      
+    then: 'validation should fail'
+    project.validate()
+  }
+  
   //ENTITY LEVEL TESTS
   
   def "test a duplicated code"() {

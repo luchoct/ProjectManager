@@ -21,7 +21,7 @@ class Project {
   }
 
   static constraints = {
-    priority min: 1
+    priority min: 1, unique: true
     code maxSize: 20, blank: false, unique: true
     name maxSize: 40, blank: false
     deliveryDate nullable: true

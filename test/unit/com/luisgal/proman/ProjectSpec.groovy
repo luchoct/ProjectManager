@@ -237,7 +237,7 @@ class ProjectSpec extends Specification {
     def project2 = new Project(code: 'commonCode', name: 'anotherName', 
       technicalLead: new Employee(code: 'codeTC2', fullName: 'nameTC2'),
       projectManager: new Employee(code: 'codePM2', fullName: 'namePM2'),
-      deliveryDate: new Date(), phase: 'briefing', priority: 1)
+      deliveryDate: new Date(), phase: 'briefing', priority: 2)
     def savedProject2 = project2.save(flush:true)
 
     then: 'validation of second project should fail'
@@ -245,5 +245,33 @@ class ProjectSpec extends Specification {
     !project2.validate()
     project2.hasErrors()
     project2.errors['code'] == 'unique'
+  }
+
+  def "test a duplicated priority"() {
+    given:
+    mockForConstraintsTests Project
+      
+    when: 'saved first project with common code'
+    def project1 = new Project(code: 'aCode', name: 'aName', 
+      technicalLead: new Employee(code: 'codeTC1', fullName: 'nameTC1'),
+      projectManager: new Employee(code: 'codePM1', fullName: 'namePM1'),
+      deliveryDate: new Date(), phase: 'briefing', priority: 100)
+    def savedProject1 = project1.save(flush:true)
+
+    then: 'saved project1'
+    savedProject1
+    
+    when: 'saved second project with common code'
+    def project2 = new Project(code: 'anotherCode', name: 'anotherName', 
+      technicalLead: new Employee(code: 'codeTC2', fullName: 'nameTC2'),
+      projectManager: new Employee(code: 'codePM2', fullName: 'namePM2'),
+      deliveryDate: new Date(), phase: 'briefing', priority: 100)
+    def savedProject2 = project2.save(flush:true)
+
+    then: 'validation of second project should fail'
+    !savedProject2
+    !project2.validate()
+    project2.hasErrors()
+    project2.errors['priority'] == 'unique'
   }
 }

@@ -1,7 +1,7 @@
 
 import com.luisgal.proman.Phase
-import com.luisgal.proman.domain.Employee
-import com.luisgal.proman.domain.Project
+import com.luisgal.proman.Employee
+import com.luisgal.proman.Project
 
 class BootStrap {
 

@@ -1,6 +1,6 @@
-package com.luisgal.proman.domain
+package com.luisgal.proman
 
-import com.luisgal.proman.Phase
+import com.luisgal.proman.Employee
 
 class Project {
   String name;

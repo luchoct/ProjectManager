@@ -1,8 +1,7 @@
-package com.luisgal.proman.domain
+package com.luisgal.proman
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
-import com.luisgal.proman.Phase
 
 @TestFor(Project)
 class ProjectSpec extends Specification {

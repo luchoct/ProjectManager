@@ -1,4 +1,4 @@
-package com.luisgal.proman.domain
+package com.luisgal.proman
 
 class Employee {
   String code;

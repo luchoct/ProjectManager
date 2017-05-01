@@ -1,5 +1,5 @@
-#Project Manager
-##Functional Specification
+# Project Manager
+## Functional Specification
 Simple grails application to manage project information.
 
 The application allows a user to create/edit/delete/view projects.
@@ -19,14 +19,14 @@ The priority field goes from 1 (highest) upwards and is dependant on the number 
 Kind of like a 'top of the pops' list. 
 
 Any list view should default to ordering by priority.
-##Technical Specification
+## Technical Specification
 * JDK 1.7.0_45
 * Grails 2.3.6
 * Groovy 2.2.1
 
-#Changelog
+# Changelog
 * 2014-08-23 Version 1.0 Initial version
 
-#Areas of improvement
+# Areas of improvement
 
 

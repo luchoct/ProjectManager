@@ -1,6 +1,6 @@
 
-import com.luisgal.proman.Employee
-import com.luisgal.proman.Project
+import com.luchoct.proman.Employee
+import com.luchoct.proman.Project
 
 class BootStrap {
 

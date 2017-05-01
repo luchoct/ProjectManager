@@ -1,6 +1,6 @@
-package com.luisgal.proman
+package com.luchoct.proman
 
-import com.luisgal.proman.Employee
+import com.luchoct.proman.Employee
 
 class Project {
   Integer priority;

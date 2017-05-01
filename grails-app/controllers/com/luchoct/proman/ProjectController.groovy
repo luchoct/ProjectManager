@@ -1,4 +1,4 @@
-package com.luisgal.proman
+package com.luchoct.proman
 
 class ProjectController {
   static scaffold = true

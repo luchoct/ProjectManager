@@ -1,4 +1,4 @@
-package com.luisgal.proman
+package com.luchoct.proman
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
